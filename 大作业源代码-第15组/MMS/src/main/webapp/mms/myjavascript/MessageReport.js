@@ -44,26 +44,26 @@ function RAMclick(){
 }
 
 // 浏览经办人信息end
-// 浏览药品信息begin
+// 浏览服装信息begin
 function RMMclick(){
 		if(access.indexOf("数据报表功能") < 0 ){
             $.messager.alert('警告','该用户没有此功能');
             event.stopPropagation();	
          }
-    	if(!$('#output').tabs('exists','药品数据报表')) {
+    	if(!$('#output').tabs('exists','服装数据报表')) {
 				     $('#output').tabs('add',{ 
 				     	// id:'ECM',   
-					    title:'药品数据报表',    
+					    title:'服装数据报表',    
 					      // fit:true,
-					     href:'./tabs/medicine/Report.html',
+					     href:'./tabs/cloth/Report.html',
 					    closable:true
 					});
 				 }
 		else
 		{
-		$('#output').tabs('select', '药品数据报表');
+		$('#output').tabs('select', '服装数据报表');
 		}
 }
 
-// 浏览药品信息end
+// 浏览服装信息end
 // 信息浏览end

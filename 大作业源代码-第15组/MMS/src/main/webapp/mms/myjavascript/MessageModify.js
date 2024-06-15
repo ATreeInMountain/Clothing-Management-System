@@ -44,26 +44,27 @@ function MAMclick(){
 }
 
 // 修改经办人信息end
-// 修改药品信息begin
+
+// 修改服装信息begin
 function MMMclick(){
 		if(access.indexOf("信息修改功能") < 0 ){
             $.messager.alert('警告','该用户没有此功能');
             event.stopPropagation();    
          }
-    	if(!$('#output').tabs('exists','修改药品信息')) {
+    	if(!$('#output').tabs('exists','修改服装信息')) {
 				     $('#output').tabs('add',{ 
 				     	// id:'ECM',   
-					    title:'修改药品信息',    
+					    title:'修改服装信息',    
 					      // fit:true,
-					    href:'./tabs/medicine/Modify.html',
+					    href:'./tabs/cloth/Modify.html',
 					    closable:true
 					});
 				 }
 		else
 		{
-		$('#output').tabs('select', '修改药品信息');
+		$('#output').tabs('select', '修改服装信息');
 		}
 }
 
-// 删除药品信息end
+// 删除服装信息end
 // 信息录入end

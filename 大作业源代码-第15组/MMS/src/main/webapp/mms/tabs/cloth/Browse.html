@@ -1,0 +1,24 @@
+<!-- /* 浏览服装信息*/ -->
+     <table class="easyui-datagrid" 
+         data-options="striped:true,
+         pagination:true,
+         
+         
+         url:'../Cloth/GetMessage',pageSize:5,
+         pageList:[2,5,10]"
+         style="width: 88%">
+      <thead>
+          <tr>
+	          <th data-options="field:'clno'" width=12%>
+	          编号</th>
+              <th data-options="field:'clname'" width=30%>
+              名称</th>
+              <th data-options="field:'clseasonal'" width=12%>
+              季节属性</th>
+              <th data-options="field:'clmode'" width=30%>
+              洗涤模式</th>
+              <th data-options="field:'clprice'" width=12%>
+              价格</th>
+          </tr>
+      </thead>
+  </table>

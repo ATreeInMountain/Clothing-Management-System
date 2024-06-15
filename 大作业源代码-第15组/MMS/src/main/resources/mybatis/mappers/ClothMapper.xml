@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mms.mapper.ClothMapper">
+
+	<select id="queryClothByClno" parameterType="String" resultType="Cloth">
+		SELECT * FROM cloth WHERE clno = #{clno}
+	</select>
+	<select id="queryMultiCloth"  parameterType="Cloth" resultType="Cloth">
+		SELECT * FROM cloth WHERE 1=1
+		<if test="clmode!=''">
+          and clmode = #{clmode} 
+        </if>
+        <if test="clname!=''">
+          and clname  = #{clname} 
+		</if>
+		<if test="clseasonal!=''">
+          and clseasonal = #{clseasonal} 
+        </if>
+        <if test="clprice!=''">
+          and clprice = #{clprice} 
+        </if>
+	</select>
+	<update id="modifyCloth"  parameterType="Cloth">
+		update cloth set clname=#{clname},clseasonal=#{clseasonal},
+		clmode=#{clmode},clprice=#{clprice} where clno=#{clno}
+	</update>
+	<delete id="deleteClothByClno" parameterType="String" >
+		DELETE FROM cloth WHERE clno = #{clno}
+	</delete>
+	<select id="queryAllCloth"  resultType="Cloth">
+		SELECT * FROM cloth
+	</select>
+	<insert id="saveCloth" parameterType="Cloth">
+		insert into cloth(clno,clname,clseasonal,clmode,clprice) VALUES 
+		(#{clno},#{clname},#{clseasonal},#{clmode},#{clprice})
+	</insert>
+	
+</mapper>

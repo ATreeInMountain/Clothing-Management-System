@@ -44,25 +44,26 @@ function DAMclick(){
 }
 
 // 删除经办人信息end
-// 删除药品信息begin
+
+// 删除服装信息begin
 function DMMclick(){
 		if(access.indexOf("信息删除功能") < 0 ){
             $.messager.alert('警告','该用户没有此功能');
             event.stopPropagation();	
          }
 
-    	if(!$('#output').tabs('exists','删除药品信息')) {
+    	if(!$('#output').tabs('exists','删除服装信息')) {
 				     $('#output').tabs('add',{ 
 				     	// id:'ECM',   
-					    title:'删除药品信息',    
+					    title:'删除服装信息',    
 					      // fit:true,
-					    href:'./tabs/medicine/Delete.html',
+					    href:'./tabs/cloth/Delete.html',
 					    closable:true
 					});
 				 }
 		else
 		{
-		$('#output').tabs('select', '删除药品信息');
+		$('#output').tabs('select', '删除服装信息');
 		}
 }
 

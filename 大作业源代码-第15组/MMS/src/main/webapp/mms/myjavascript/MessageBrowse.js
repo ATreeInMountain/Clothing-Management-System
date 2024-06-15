@@ -39,24 +39,25 @@ function BAMclick(){
 }
 
 // 浏览经办人信息end
-// 浏览药品信息begin
+
+// 浏览服装信息begin
 function BMMclick(){
 		if(access.indexOf("信息浏览功能") < 0 ){
             $.messager.alert('警告','该用户没有此功能');
             event.stopPropagation();	
          }
-    	if(!$('#output').tabs('exists','浏览药品信息')) {
+    	if(!$('#output').tabs('exists','浏览服装信息')) {
 				     $('#output').tabs('add',{ 
-					    title:'浏览药品信息',    
-					     href:'./tabs/medicine/Browse.html',
+					    title:'浏览服装信息',    
+					     href:'./tabs/cloth/Browse.html',
 					    closable:true
 					});
 				 }
 		else
 		{
-		$('#output').tabs('select', '浏览药品信息');
+		$('#output').tabs('select', '浏览服装信息');
 		}
 }
+// 浏览服装信息end
 
-// 浏览药品信息end
 // 信息浏览end
