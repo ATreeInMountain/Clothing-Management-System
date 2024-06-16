@@ -1,113 +1,105 @@
 <!-- 服装信息修改MMM -->
-<div  style="margin: 2% 0px 0px 30%">
-  <div class="easyui-panel" title="服装编号查询" 
-    data-options="iconCls:'icon-pill'"
-    style="max-width:400px;padding:30px 60px;">
-    <div style="margin-bottom:20px">
-      <input id="MCLMNO" class="easyui-textbox" 
-      labelPosition="top" 
-      data-options="prompt:'请输入服装编号...'" 
-      style="width:100%;height:35px">
+<div style="margin: 2% 0 0 30%;">
+    <div class="easyui-panel" title="服装编号查询" 
+         data-options="iconCls:'icon-pill'"
+         style="max-width:400px;padding:30px 60px;">
+        <div style="margin-bottom:20px">
+            <input id="MCLMNO" class="easyui-textbox" 
+                   labelPosition="top" 
+                   data-options="prompt:'请输入服装编号...'" 
+                   style="width:100%;height:35px;" />
+        </div>
+        <div>
+            <a href="javascript:MMMIdclick()" class="easyui-linkbutton" iconCls="icon-ok" 
+               style="width:100%;">查询</a>
+        </div>
     </div>
-    <div>
-      <a href="javascript:MMMIdclick()" class="easyui-linkbutton" iconCls="icon-ok" 
-      style="width:100%">查询</a>
-    </div>
-  </div>
 </div>
 <!-- 查询结束 -->
 
 <!-- 隐藏页面 -->
 <!-- 隐藏对话框 -->        
 <div class="easyui-dialog" title="服装信息" closed="true" id="MMMdialog"
-    data-options="iconCls:'icon-pill',modal:true,draggable:false"
-    style="width:1000px;height:600px;">
-    <div 
-        style="margin:50px 0px 0px 100px;
-        font-size: 40px">
+     data-options="iconCls:'icon-pill',modal:true,draggable:false"
+     style="width:1000px;height:600px;">
+    <div style="margin:50px 0 0 100px;font-size: 40px;">
         <form id="MMMform" method="post">
-          <input type="hidden" name="clprice" id="mmclprice">
-          <div style="margin-bottom: 30px">
-            编号:<input  name="clno" id="mmclno" 
-            class="easyui-textbox"
-            style="width: 200px;height:40px"
-            data-options="" readonly="readonly"></input>
-            &nbsp;
-            季节属性:<select  class="easyui-combobox" name="clseasonal"  id="mmclseasonal" 
-            data-options="panelHeight:'auto'"
-            style="width: 200px;height:40px">   
-            <option value="春">春</option>   
-            <option value="夏">夏</option> 
-            <option value="秋">秋</option>   
-            <option value="冬">冬</option> 
-           </select>  
-          </div>
-          <div style="margin-bottom: 30px">
-           名称:<input  name="clname" id="mmclname" 
-           multiline="true"
-           class="easyui-textbox" 
-           style="width: 500px;height:150px"
-           data-options="" ></input>
-          </div>
-          <div style="margin-bottom: 30px;">
-            洗涤模式:<input  name="clmode" id="mmclmode" 
-            multiline="true"
-            class="easyui-textbox" 
-            style="width: 500px;height:150px"
-            data-options="" ></input>
-          </div>
-          <div style="margin-bottom: 30px;">
-            价格:<input  name="clprice" id="mmclprice" 
-            multiline="true"
-            class="easyui-textbox" 
-            style="width: 500px;height:150px"
-            data-options="" ></input>
-          </div>
+            <input type="hidden" name="clprice" id="mmclprice" />
+            <div style="margin-bottom: 30px;">
+                <label for="mmclno">编号:</label>
+                <input name="clno" id="mmclno" 
+                       class="easyui-numberbox"
+                       style="width: 200px;height:40px;"
+                       data-options="precision:0" readonly="readonly" />
+                &nbsp;
+                <label for="mmclseasonal">季节属性:</label>
+                <select class="easyui-combobox" name="clseasonal" id="mmclseasonal" 
+                        data-options="panelHeight:'auto'"
+                        style="width: 300px;height:40px;">   
+                    <option value="春">春</option>   
+                    <option value="夏">夏</option> 
+                    <option value="秋">秋</option>   
+                    <option value="冬">冬</option> 
+                </select> 
+                &nbsp;<br><br>
+                <label for="mmclname">名称:</label>
+                <input name="clname" id="mmclname" 
+                       class="easyui-textbox" 
+                       style="width: 600px;height:40px;" />
+                &nbsp;<br><br>
+                <label for="mmclmode">洗涤模式:</label>
+                <input name="clmode" id="mmclmode" 
+                       class="easyui-textbox" 
+                       style="width: 500px;height:40px;" />
+                &nbsp;<br><br>
+                <label for="mmclprice">价格:</label>
+                <input name="clprice" id="mmclprice" 
+                       class="easyui-numberbox" 
+                       style="width: 500px;height:40px;"
+                       data-options="precision:2" />
+            </div>
         </form>
-      <a  href="javascript:MMMclickModify()"
-        class="easyui-linkbutton" 
-        data-options="text:'asd',iconCls:'icon-user' "
-         style="width: 150px;height: 40px;
-            margin-left: 35%" ><h1>修改</h1>
-      </a>       
+        <a href="javascript:MMMclickModify()" class="easyui-linkbutton" 
+           data-options="iconCls:'icon-user'"
+           style="width: 150px;height: 40px;margin-left: 35%;">
+           <h1>修改</h1>
+        </a>       
     </div>
 </div>
-<script type="text/javascript">
-  function MMMIdclick() {
 
-  $.post("../Cloth/QueryClothByClno", {
-    clno: $('#MCLMNO').textbox('getValue')
-  }, function(data) {
-    if (data == ''){
-      $.messager.alert('警告', '服装编号无效');
-      return ;
+<script type="text/javascript">
+    function MMMIdclick() {
+        $.post("../Cloth/QueryClothByClno", {
+            clno: $('#MCLMNO').textbox('getValue')
+        }, function(data) {
+            if (!data) {
+                $.messager.alert('警告', '服装编号无效');
+                return;
+            }
+            $('#MMMdialog').dialog('open');
+            $("#mmclno").numberbox('setValue', data.clno);
+            $("#mmclseasonal").combobox('setValue', data.clseasonal);
+            $("#mmclname").textbox('setValue', data.clname);
+            $("#mmclmode").textbox('setValue', data.clmode);
+            $("#mmclprice").numberbox('setValue', data.clprice);
+        }).fail(function() {
+            $.messager.alert('错误', '服务器请求失败');
+        });
     }
-    $('#MMMdialog').dialog('open');
-    $("#mmclno").val(data.clno);
-    $("#mmclseasonal").combobox('setValue', data.clseasonal);
-    $("#mmclseasonal").textbox('textbox').css("font-size", "18pt");
-    $("#mmclname").textbox('setValue', data.clname);
-    $("#mmclname").textbox('textbox').css("font-size", "18pt");
-    $("#mmclmode").textbox('setValue', data.clmode);
-    $("#mmclmode").textbox('textbox').css("font-size", "18pt");
-    $("#mmclprice").textbox('setValue', data.clprice);
-    $("#mmclprice").textbox('textbox').css("font-size", "18pt");
-  });
-}
-function MMMclickModify(){
-  $('#MMMform').form({    
-    url:'../Cloth/ModifyCloth',    
-    onSubmit: function(){    
-        // do some check    
-        // return false to prevent submit;    
-    },    
-    success:function(data){    
-        $.messager.alert('提示', data); 
-        $('#MMMdialog').dialog('close'); 
-    }    
-});    
-// submit the form    
-$('#MMMform').submit();  
-   
-}
+
+    function MMMclickModify() {
+        $('#MMMform').form({    
+            url: '../Cloth/ModifyCloth',    
+            onSubmit: function() {    
+                // 可以在这里添加一些表单验证
+                return true; // 返回false将阻止提交
+            },    
+            success: function(data) {    
+                $.messager.alert('提示', data); 
+                $('#MMMdialog').dialog('close'); 
+            }    
+        });    
+        // 提交表单
+        $('#MMMform').submit();  
+    }
 </script>

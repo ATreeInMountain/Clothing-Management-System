@@ -1,10 +1,6 @@
 package mms.pojo;
 
 public class Cloth {
-	// 编号clno：char(12)
-	// 名称clname：nvarchar(50)
-	// 服用方法clseasonal：nchar(2) 内服 或 外用
-	// 功效clmode：nvarchar(50)
 	private int clno;
 	private String clname;
 	private String clseasonal;

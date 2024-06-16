@@ -5,15 +5,21 @@ import java.util.List;
 import mms.pojo.Cloth;
 
 public interface ClothMapper {
-	public Cloth queryClothByClno(String clno);
+    // 通过服装编号查询服装信息
+    public Cloth queryClothByClno(String clno);
 
-	public List<Cloth> queryAllCloth();
+    // 查询所有服装信息
+    public List<Cloth> queryAllCloth();
 
-	public void saveCloth(Cloth cloth);
+    // 保存服装信息
+    public void saveCloth(Cloth cloth);
 
-	public void deleteClothByClno(String clno);
+    // 通过服装编号删除服装信息
+    public void deleteClothByClno(String clno);
 
-	public void modifyCloth(Cloth cloth);
+    // 修改服装信息
+    public void modifyCloth(Cloth cloth);
 
-	public List<Cloth> queryMultiCloth(Cloth cloth);
+    // 多条件查询服装信息
+    public List<Cloth> queryMultiCloth(Cloth cloth);
 }

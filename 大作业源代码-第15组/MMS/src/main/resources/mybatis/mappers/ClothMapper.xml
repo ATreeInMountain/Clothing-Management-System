@@ -4,37 +4,48 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="mms.mapper.ClothMapper">
 
-	<select id="queryClothByClno" parameterType="String" resultType="Cloth">
-		SELECT * FROM cloth WHERE clno = #{clno}
-	</select>
-	<select id="queryMultiCloth"  parameterType="Cloth" resultType="Cloth">
-		SELECT * FROM cloth WHERE 1=1
-		<if test="clmode!=''">
-          and clmode = #{clmode} 
+    <!-- 通过服装编号查询 -->
+    <select id="queryClothByClno" parameterType="String" resultType="Cloth">
+        SELECT * FROM cloth WHERE clno = #{clno}
+    </select>
+
+    <!-- 多条件查询 -->
+    <select id="queryMultiCloth"  parameterType="Cloth" resultType="Cloth">
+        SELECT * FROM cloth WHERE 1=1
+        <if test="clmode != null and clmode != ''">
+          AND clmode = #{clmode} 
         </if>
-        <if test="clname!=''">
-          and clname  = #{clname} 
-		</if>
-		<if test="clseasonal!=''">
-          and clseasonal = #{clseasonal} 
+        <if test="clname != null and clname != ''">
+          AND clname  = #{clname} 
         </if>
-        <if test="clprice!=''">
-          and clprice = #{clprice} 
+        <if test="clseasonal != null and clseasonal != ''">
+          AND clseasonal = #{clseasonal} 
         </if>
-	</select>
-	<update id="modifyCloth"  parameterType="Cloth">
-		update cloth set clname=#{clname},clseasonal=#{clseasonal},
-		clmode=#{clmode},clprice=#{clprice} where clno=#{clno}
-	</update>
-	<delete id="deleteClothByClno" parameterType="String" >
-		DELETE FROM cloth WHERE clno = #{clno}
-	</delete>
-	<select id="queryAllCloth"  resultType="Cloth">
-		SELECT * FROM cloth
-	</select>
-	<insert id="saveCloth" parameterType="Cloth">
-		insert into cloth(clno,clname,clseasonal,clmode,clprice) VALUES 
-		(#{clno},#{clname},#{clseasonal},#{clmode},#{clprice})
-	</insert>
-	
+        <if test="clprice != null">
+          AND clprice = #{clprice} 
+        </if>
+    </select>
+
+    <!-- 修改服装信息 -->
+    <update id="modifyCloth"  parameterType="Cloth">
+        UPDATE cloth SET clname=#{clname}, clseasonal=#{clseasonal}, 
+        clmode=#{clmode}, clprice=#{clprice} WHERE clno=#{clno}
+    </update>
+    
+    <!-- 删除服装信息 -->
+    <delete id="deleteClothByClno" parameterType="String">
+        DELETE FROM cloth WHERE clno = #{clno}
+    </delete>
+    
+    <!-- 查询所有服装 -->
+    <select id="queryAllCloth" resultType="Cloth">
+        SELECT * FROM cloth
+    </select>
+
+    <!-- 保存服装信息 -->
+    <insert id="saveCloth" parameterType="Cloth">
+        INSERT INTO cloth(clno, clname, clseasonal, clmode, clprice) 
+        VALUES (#{clno}, #{clname}, #{clseasonal}, #{clmode}, #{clprice})
+    </insert>
+    
 </mapper>
